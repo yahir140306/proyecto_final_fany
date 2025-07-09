@@ -287,7 +287,7 @@
     .card-interactive > div:last-child {
       transition: all 0.2s ease-out;
     }
-    
+
     .card-interactive:active > div:last-child {
       transition: all 0.1s ease-out;
     }
@@ -298,79 +298,77 @@
     .card-interactive {
       cursor: pointer;
     }
-    
+
     .card-interactive:hover > div:first-child {
       opacity: 0.25;
     }
-    
+
     .card-interactive:hover > div:last-child {
       transform: translateY(0);
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      box-shadow:
+        0 20px 25px -5px rgba(0, 0, 0, 0.1),
+        0 10px 10px -5px rgba(0, 0, 0, 0.04);
     }
   }
 </style>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener("DOMContentLoaded", function () {
     // Agregar soporte táctil mejorado para las cards
-    const cards = document.querySelectorAll('.card-interactive');
-    
-    cards.forEach(card => {
+    const cards = document.querySelectorAll(".card-interactive");
+
+    cards.forEach((card) => {
+      const cardElement = card as HTMLElement;
+
       // Eventos táctiles para mejor feedback
-      card.addEventListener('touchstart', function(e) {
-        this.classList.add('touching');
-      }, { passive: true });
-      
-      card.addEventListener('touchend', function(e) {
-        this.classList.remove('touching');
-        
-        // Agregar efecto de "ripple" visual
-        const ripple = document.createElement('div');
-        ripple.classList.add('ripple-effect');
-        
-        const rect = this.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height);
-        const x = e.changedTouches[0].clientX - rect.left - size / 2;
-        const y = e.changedTouches[0].clientY - rect.top - size / 2;
-        
-        ripple.style.cssText = `
-          position: absolute;
-          border-radius: 50%;
-          background: rgba(255, 255, 255, 0.6);
-          transform: scale(0);
-          left: ${x}px;
-          top: ${y}px;
-          width: ${size}px;
-          height: ${size}px;
-          pointer-events: none;
-          animation: ripple 0.6s ease-out;
-        `;
-        
-        this.appendChild(ripple);
-        
-        setTimeout(() => {
-          ripple.remove();
-        }, 600);
-      }, { passive: true });
-      
-      card.addEventListener('touchcancel', function(e) {
-        this.classList.remove('touching');
-      }, { passive: true });
+      cardElement.addEventListener(
+        "touchstart",
+        function () {
+          cardElement.classList.add("touching");
+        },
+        { passive: true }
+      );
+
+      cardElement.addEventListener(
+        "touchend",
+        function () {
+          cardElement.classList.remove("touching");
+        },
+        { passive: true }
+      );
+
+      cardElement.addEventListener(
+        "touchcancel",
+        function () {
+          cardElement.classList.remove("touching");
+        },
+        { passive: true }
+      );
     });
-    
+
     // Agregar soporte táctil para los logos
-    const logos = document.querySelectorAll('.nav-logo');
-    logos.forEach(logo => {
-      logo.addEventListener('touchstart', function(e) {
-        this.style.transform = 'scale(0.95)';
-      }, { passive: true });
-      
-      logo.addEventListener('touchend', function(e) {
-        this.style.transform = 'scale(1.05)';
-        setTimeout(() => {
-          this.style.transform = '';
-        }, 200);
-      }, { passive: true });
+    const logos = document.querySelectorAll(".transform");
+    logos.forEach((logo) => {
+      const logoElement = logo as HTMLElement;
+
+      logoElement.addEventListener(
+        "touchstart",
+        function () {
+          logoElement.style.transform = "scale(0.95)";
+        },
+        { passive: true }
+      );
+
+      logoElement.addEventListener(
+        "touchend",
+        function () {
+          logoElement.style.transform = "scale(1.05)";
+          setTimeout(() => {
+            logoElement.style.transform = "";
+          }, 200);
+        },
+        { passive: true }
+      );
     });
   });
 </script>
@@ -382,7 +380,7 @@
       opacity: 0;
     }
   }
-  
+
   .touching {
     transform: scale(0.98);
   }
