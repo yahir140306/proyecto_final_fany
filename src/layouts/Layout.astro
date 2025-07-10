@@ -1,5 +1,16 @@
 ---
 import "../styles/global.css";
+import { ViewTransitions } from "astro:transitions";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Proyecto Final - Estefania Amador",
+  description = "Proyecto Final de Sistema de Investigación de Mercados I",
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -9,18 +20,16 @@ import "../styles/global.css";
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>Proyecto Final - Estefania Amador</title>
-    <meta
-      name="description"
-      content="Proyecto Final de Sistema de Investigación de Mercados I"
-    />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <ViewTransitions />
   </head>
   <body
     class="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-100 to-purple-100 overflow-x-hidden"
   >
-    <div class="relative min-h-screen">
+    <div class="relative min-h-screen flex justify-center">
       <!-- Elementos decorativos de fondo -->
-      <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
         <div
           class="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"
         >
@@ -35,7 +44,9 @@ import "../styles/global.css";
         </div>
       </div>
 
-      <slot />
+      <div class="relative w-full z-10">
+        <slot />
+      </div>
     </div>
   </body>
 </html>
