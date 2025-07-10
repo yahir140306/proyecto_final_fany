@@ -49,6 +49,62 @@
   background: linear-gradient(to bottom, #7c3aed, #2563eb);
 }
 
+/* Animaciones de View Transitions */
+::view-transition-old(root) {
+  animation: 0.3s cubic-bezier(0.76, 0, 0.24, 1) both fade-out;
+}
+
+::view-transition-new(root) {
+  animation: 0.5s cubic-bezier(0.76, 0, 0.24, 1) 0.1s both fade-in;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+/* Animaciones para elementos de página */
+.slide-in-right {
+  animation: slide-in-from-right 0.5s forwards;
+}
+
+.slide-in-left {
+  animation: slide-in-from-left 0.5s forwards;
+}
+
+.fade-in-up-delayed {
+  opacity: 0;
+  animation: fade-in-up 0.8s ease-out forwards;
+  animation-delay: var(--delay, 0.2s);
+}
+
+@keyframes slide-in-from-right {
+  from { 
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-from-left {
+  from { 
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 /* Efectos de transición suaves */
 * {
   transition: all 0.3s ease;
