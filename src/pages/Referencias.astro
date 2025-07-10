@@ -1,0 +1,109 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Referencias - Proyecto Final">
+  <div class="pt-10 sm:pt-16 pb-8 sm:pb-16 z-10">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div
+        class="bg-white rounded-2xl p-6 sm:p-8 shadow-xl border border-white/20"
+      >
+        <h1
+          class="text-3xl sm:text-4xl font-bold mb-6 bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent"
+        >
+          Referencias
+        </h1>
+
+        <p class="text-gray-700 mb-2 fade-in-up-delayed" style="--delay: 0.3s">
+          Una lista completa de todas las fuentes citadas en el informe,
+          ordenadas alfabéticamente según el formato APA.
+        </p>
+
+        <h2
+          class="text-xl sm:text-2xl font-semibold text-violet-700 mb-4 mt-6 fade-in-up-delayed"
+          style="--delay: 0.4s"
+        >
+          Ejemplos en formato APA:
+        </h2>
+
+        <div class="space-y-5 mt-6 fade-in-up-delayed" style="--delay: 0.5s">
+          <div
+            class="p-4 bg-white rounded-lg shadow-sm border-l-4 border-violet-500 hover:shadow-md transition-shadow duration-300"
+          >
+            <p class="text-gray-800 text-sm sm:text-base pl-2">
+              Hernández, R., Fernández, C., & Baptista, P. (2014). <span
+                class="italic">Metodología de la investigación</span
+              > (6ª ed.). McGraw-Hill.
+            </p>
+          </div>
+
+          <div
+            class="p-4 bg-white rounded-lg shadow-sm border-l-4 border-violet-500 hover:shadow-md transition-shadow duration-300"
+          >
+            <p class="text-gray-800 text-sm sm:text-base pl-2">
+              Sigman, M. (2021). <span class="italic"
+                >El poder de las palabras</span
+              >. Editorial Debate.
+            </p>
+          </div>
+
+          <div
+            class="p-4 bg-white rounded-lg shadow-sm border-l-4 border-violet-500 hover:shadow-md transition-shadow duration-300"
+          >
+            <p class="text-gray-800 text-sm sm:text-base pl-2">
+              Instituto Nacional de Estadística y Geografía (INEGI). (2023). <span
+                class="italic">Estadísticas de educación en México</span
+              >.
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="p-4 bg-violet-50 rounded-xl border border-violet-100 mt-8 fade-in-up-delayed"
+          style="--delay: 0.7s"
+        >
+          <p class="text-gray-700">
+            Las referencias permiten al lector <span
+              class="font-semibold text-violet-700"
+              >verificar la información y consultar las fuentes originales</span
+            > si lo desea. Es importante mantener un formato consistente y preciso.
+          </p>
+        </div>
+
+        <!-- Herramienta de búsqueda de referencias -->
+        <div
+          class="mt-10 bg-white p-5 rounded-xl shadow-md fade-in-up-delayed"
+          style="--delay: 0.8s"
+        >
+          <h3 class="text-lg font-semibold text-gray-800 mb-4">
+            Buscar más referencias:
+          </h3>
+          <div class="flex flex-col sm:flex-row gap-3">
+            <input
+              type="text"
+              placeholder="Buscar artículos, libros, documentos..."
+              class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent"
+            />
+            <button
+              class="px-5 py-2 bg-gradient-to-r from-violet-600 to-purple-600 text-white rounded-lg hover:opacity-90 transition-opacity duration-300 shadow-md hover:shadow-lg flex items-center justify-center"
+            >
+              <svg
+                class="w-5 h-5 mr-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+              </svg>
+              Buscar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
