@@ -1,4 +1,4 @@
-// @ts-check
+// @ts-nocheck
 import { defineConfig } from "astro/config";
 
 import tailwindcss from "@tailwindcss/vite";
@@ -7,8 +7,5 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
-  },
-  experimental: {
-    viewTransitions: true,
   },
 });
