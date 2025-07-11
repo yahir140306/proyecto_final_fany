@@ -1,8 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
 ---
 
 <Layout title="Conclusiones - Proyecto Final">
+  <Navbar />
+
   <div class="pt-10 sm:pt-16 pb-8 sm:pb-16 z-10">
     <div class="max-w-4xl mx-auto px-4 sm:px-6">
       <div
@@ -86,7 +89,7 @@ import Layout from "../layouts/Layout.astro";
                   d="M5 13l4 4L19 7"></path>
               </svg>
             </span>
-            Evaluación del cumplimiento de los objetivos
+            Confirmación o rechazo de las hipótesis planteadas
           </li>
           <li class="flex items-start">
             <span
@@ -105,7 +108,7 @@ import Layout from "../layouts/Layout.astro";
                   d="M5 13l4 4L19 7"></path>
               </svg>
             </span>
-            Reflexiones generales sobre los resultados
+            Implicaciones de los resultados para el área de estudio
           </li>
         </ul>
 
@@ -114,11 +117,11 @@ import Layout from "../layouts/Layout.astro";
           style="--delay: 0.6s"
         >
           <p class="text-gray-700">
-            Las conclusiones deben ser <span
+            Las conclusiones deben estar <span
               class="font-semibold text-amber-700"
-              >claras, directas y coherentes</span
-            > con los datos presentados anteriormente. No se deben incluir ideas
-            nuevas que no hayan sido discutidas previamente en el informe.
+              >directamente relacionadas con los objetivos</span
+            > planteados al inicio de la investigación y ser coherentes con los resultados
+            obtenidos.
           </p>
         </div>
 
@@ -130,24 +133,22 @@ import Layout from "../layouts/Layout.astro";
           <div
             class="bg-white p-4 rounded-lg shadow-md border-l-4 border-amber-500 transform hover:scale-105 transition-transform duration-300"
           >
-            <h3 class="text-lg font-semibold text-amber-800">
-              Hallazgo Principal #1
+            <h3 class="font-semibold text-amber-800 mb-2">
+              Conclusión General
             </h3>
-            <p class="text-gray-600 text-sm mt-2">
-              Las preferencias de los consumidores muestran una tendencia hacia
-              productos más sostenibles y eco-amigables.
+            <p class="text-gray-700 text-sm">
+              Síntesis que responde al objetivo principal de la investigación.
             </p>
           </div>
 
           <div
             class="bg-white p-4 rounded-lg shadow-md border-l-4 border-orange-500 transform hover:scale-105 transition-transform duration-300"
           >
-            <h3 class="text-lg font-semibold text-amber-800">
-              Hallazgo Principal #2
+            <h3 class="font-semibold text-orange-800 mb-2">
+              Conclusiones Específicas
             </h3>
-            <p class="text-gray-600 text-sm mt-2">
-              El 78% de los encuestados estaría dispuesto a pagar un precio
-              premium por productos con certificaciones ambientales.
+            <p class="text-gray-700 text-sm">
+              Resultados puntuales que responden a cada objetivo específico.
             </p>
           </div>
         </div>

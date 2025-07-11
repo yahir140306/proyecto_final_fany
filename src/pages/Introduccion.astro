@@ -1,9 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
 ---
 
 <Layout title="Introducción - Proyecto Final">
-  <div class="pt-10 sm:pt-16 pb-8 sm:pb-16 z-10">
+  <Navbar />
+
+  <div class="relative z-20 pt-10 sm:pt-16 pb-8 sm:pb-16">
     <div class="max-w-4xl mx-auto px-4 sm:px-6">
       <div
         class="bg-white rounded-2xl p-6 sm:p-8 shadow-xl border border-white/20"
@@ -14,23 +17,17 @@ import Layout from "../layouts/Layout.astro";
           Introducción
         </h1>
 
-        <p class="text-gray-700 mb-6 fade-in-up-delayed" style="--delay: 0.3s">
+        <p class="text-gray-700 mb-6">
           La introducción explica el tema de la investigación, su importancia y
           lo que se busca lograr. Es una parte clave que contextualiza al lector
           y lo prepara para entender el resto del informe.
         </p>
 
-        <h2
-          class="text-xl sm:text-2xl font-semibold text-purple-700 mb-4 fade-in-up-delayed"
-          style="--delay: 0.4s"
-        >
+        <h2 class="text-xl sm:text-2xl font-semibold text-purple-700 mb-4">
           Incluye:
         </h2>
 
-        <ul
-          class="space-y-3 ml-5 mb-6 fade-in-up-delayed"
-          style="--delay: 0.5s"
-        >
+        <ul class="space-y-3 ml-5 mb-6">
           <li class="flex items-start">
             <span
               class="inline-flex items-center justify-center rounded-md bg-purple-100 p-1 text-purple-700 mr-3"
