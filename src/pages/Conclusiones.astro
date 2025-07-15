@@ -11,22 +11,22 @@ import ScrollAnimations from "../components/ScrollAnimations.astro";
   <div class="pt-10 sm:pt-16 pb-8 sm:pb-16 z-10">
     <div class="max-w-4xl mx-auto px-4 sm:px-6">
       <div
-        class="scroll-animate bg-white rounded-2xl p-6 sm:p-8 shadow-xl border border-white/20"
+        class="card-animate bg-white rounded-2xl p-6 sm:p-8 shadow-xl border border-white/20"
       >
         <h1
-          class="scroll-animate text-3xl sm:text-4xl font-bold mb-6 bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent"
+          class="title-animate text-3xl sm:text-4xl font-bold mb-6 bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent"
         >
           Conclusiones
         </h1>
 
-        <p class="scroll-animate text-gray-700 mb-6">
+        <p class="fade-animate text-gray-700 mb-6">
           Las conclusiones son el resultado final de todo el proceso
           investigativo. AquÃ­ se exponen las ideas principales que se
           obtuvieron a partir del anÃ¡lisis de los datos.
         </p>
 
         <h2
-          class="scroll-animate-left text-xl sm:text-2xl font-semibold text-amber-700 mb-4"
+          class="scroll-animate text-xl sm:text-2xl font-semibold text-amber-700 mb-4"
         >
           Debe contener:
         </h2>
@@ -154,5 +154,50 @@ import ScrollAnimations from "../components/ScrollAnimations.astro";
     </div>
   </div>
 
-  <ScrollAnimations />
+  <script>
+    import ScrollReveal from "scrollreveal";
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const sr = ScrollReveal({
+        distance: "50px",
+        duration: 800,
+        easing: "ease-in-out",
+        reset: false,
+        mobile: true,
+        viewFactor: 0.2,
+      });
+
+      // Contenedor principal
+      sr.reveal(".card-animate", {
+        origin: "bottom",
+        delay: 200,
+      });
+
+      // Título
+      sr.reveal(".title-animate", {
+        origin: "top",
+        delay: 500,
+      });
+
+      // Descripción
+      sr.reveal(".fade-animate", {
+        origin: "bottom",
+        delay: 1000,
+      });
+
+      // Subtítulo
+      sr.reveal(".scroll-animate", {
+        origin: "left",
+        delay: 1500,
+      });
+
+      // Elementos de la lista
+      sr.reveal(".scroll-stagger", {
+        origin: "left",
+        distance: "30px",
+        duration: 600,
+        interval: 500,
+      });
+    });
+  </script>
 </Layout>

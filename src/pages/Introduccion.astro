@@ -10,7 +10,7 @@ import ScrollAnimations from "../components/ScrollAnimations.astro";
   <div class="relative z-20 pt-10 sm:pt-16 pb-8 sm:pb-16">
     <div class="max-w-4xl mx-auto px-4 sm:px-6">
       <div
-        class="scroll-animate bg-white rounded-2xl p-6 sm:p-8 shadow-xl border border-white/20"
+        class="card-animate bg-white rounded-2xl p-6 sm:p-8 shadow-xl border border-white/20"
       >
         <h1
           class="title-animate text-3xl sm:text-4xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
@@ -25,7 +25,7 @@ import ScrollAnimations from "../components/ScrollAnimations.astro";
         </p>
 
         <h2
-          class="scroll-animate-left text-xl sm:text-2xl font-semibold text-purple-700 mb-4"
+          class="scroll-animate text-xl sm:text-2xl font-semibold text-purple-700 mb-4"
         >
           Incluye:
         </h2>
@@ -69,7 +69,7 @@ import ScrollAnimations from "../components/ScrollAnimations.astro";
             </span>
             La justificación del estudio (¿Por qué es importante?)
           </li>
-          <li class="flex items-start">
+          <li class="scroll-stagger flex items-start">
             <span
               class="inline-flex items-center justify-center rounded-md bg-purple-100 p-1 text-purple-700 mr-3"
             >
@@ -88,7 +88,7 @@ import ScrollAnimations from "../components/ScrollAnimations.astro";
             </span>
             El planteamiento del problema
           </li>
-          <li class="flex items-start">
+          <li class="scroll-stagger flex items-start">
             <span
               class="inline-flex items-center justify-center rounded-md bg-purple-100 p-1 text-purple-700 mr-3"
             >
@@ -107,7 +107,7 @@ import ScrollAnimations from "../components/ScrollAnimations.astro";
             </span>
             Los objetivos: uno general y varios específicos
           </li>
-          <li class="flex items-start">
+          <li class="scroll-stagger flex items-start">
             <span
               class="inline-flex items-center justify-center rounded-md bg-purple-100 p-1 text-purple-700 mr-3"
             >
@@ -126,7 +126,7 @@ import ScrollAnimations from "../components/ScrollAnimations.astro";
             </span>
             Las hipótesis (si es necesario)
           </li>
-          <li class="flex items-start">
+          <li class="scroll-stagger flex items-start">
             <span
               class="inline-flex items-center justify-center rounded-md bg-purple-100 p-1 text-purple-700 mr-3"
             >
@@ -164,5 +164,52 @@ import ScrollAnimations from "../components/ScrollAnimations.astro";
     </div>
   </div>
 
-  <ScrollAnimations />
+  <script>
+    import ScrollReveal from "scrollreveal";
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const sr = ScrollReveal({
+        distance: "50px",
+        duration: 800,
+        easing: "ease-in-out",
+        reset: false,
+        mobile: true,
+        viewFactor: 0.2,
+      });
+
+      // Contenedor principal
+      sr.reveal(".card-animate", {
+        origin: "bottom",
+        delay: 200,
+      });
+
+      // Título
+      sr.reveal(".title-animate", {
+        origin: "top",
+        delay: 500,
+      });
+
+      // Descripción
+      sr.reveal(".fade-animate", {
+        origin: "bottom",
+        delay: 1000,
+      });
+
+      // Subtítulo
+      sr.reveal(".scroll-animate", {
+        origin: "left",
+        delay: 1500,
+      });
+
+      // Elementos de la lista con delays progresivos
+      sr.reveal(".scroll-stagger", {
+        origin: "left",
+        distance: "30px",
+        duration: 600,
+        interval: 500,
+      });
+    });
+  </script>
 </Layout>
+
+<ScrollAnimations />

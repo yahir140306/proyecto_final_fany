@@ -53,9 +53,9 @@
 <section class="relative z-10 pt-10 sm:pt-20 pb-8 sm:pb-16">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Título principal con animación -->
-    <div class="text-center mb-10 sm:mb-16 animate-fade-in-up">
+    <div class="text-center mb-10 sm:mb-16">
       <h1
-        class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6"
+        class="title-animate text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6"
       >
         <span
           class="bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-600 bg-clip-text text-transparent"
@@ -70,7 +70,7 @@
         </span>
       </h1>
       <p
-        class="text-base sm:text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed px-4"
+        class="fade-animate text-base sm:text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed px-4"
       >
         Es una parte fundamental del informe porque presenta de manera breve,
         clara y concisa los elementos más importantes de la investigación. Su
@@ -82,7 +82,7 @@
     <!-- Cards de información -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-10 sm:mb-16">
       <!-- Card Principal -->
-      <div class="group relative card-interactive">
+      <div class="card-animate group relative card-interactive">
         <div
           class="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl blur opacity-25 group-hover:opacity-75 group-active:opacity-75 transition duration-1000 group-hover:duration-200"
         >
@@ -124,7 +124,7 @@
       </div>
 
       <!-- Card Estudiante -->
-      <div class="group relative card-interactive">
+      <div class="card-animate group relative card-interactive">
         <div
           class="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl blur opacity-25 group-hover:opacity-75 group-active:opacity-75 transition duration-1000 group-hover:duration-200"
         >
@@ -169,7 +169,7 @@
     <!-- Cards de materia y maestra -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-10 sm:mb-16">
       <!-- Card Materia -->
-      <div class="group relative card-interactive">
+      <div class="card-animate group relative card-interactive">
         <div
           class="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl blur opacity-25 group-hover:opacity-75 group-active:opacity-75 transition duration-1000 group-hover:duration-200"
         >
@@ -206,7 +206,7 @@
       </div>
 
       <!-- Card Maestra -->
-      <div class="group relative card-interactive">
+      <div class="card-animate group relative card-interactive">
         <div
           class="absolute -inset-0.5 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-75 group-active:opacity-75 transition duration-1000 group-hover:duration-200"
         >
@@ -461,6 +461,40 @@
         },
         { passive: true }
       );
+    });
+  });
+
+  // ScrollReveal animations for presentacion
+  import ScrollReveal from "scrollreveal";
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const sr = ScrollReveal({
+      distance: "50px",
+      duration: 800,
+      easing: "ease-in-out",
+      reset: false,
+      mobile: true,
+      viewFactor: 0.2,
+    });
+
+    // Título principal
+    sr.reveal(".title-animate", {
+      origin: "top",
+      delay: 200,
+    });
+
+    // Descripción
+    sr.reveal(".fade-animate", {
+      origin: "bottom",
+      delay: 700,
+    });
+
+    // Las 4 tarjetas aparecen una por una con 500ms de diferencia
+    sr.reveal(".card-animate", {
+      origin: "bottom",
+      distance: "60px",
+      duration: 900,
+      interval: 500,
     });
   });
 </script>

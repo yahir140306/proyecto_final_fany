@@ -17,13 +17,14 @@
 
       // Configuración básica y segura de ScrollReveal
       const sr = ScrollReveal({
-        distance: "30px",
-        duration: 600,
-        easing: "ease-out",
+        distance: "50px",
+        duration: 800,
+        easing: "ease-in-out",
         reset: false,
         mobile: true,
-        viewFactor: 0.15,
+        viewFactor: 0.2,
         cleanup: true,
+        interval: 500, // 500ms de delay entre elementos
         beforeReveal: function (el) {
           (el as HTMLElement).style.visibility = "visible";
         },
@@ -35,100 +36,105 @@
 
       // Esperar un poco para asegurar que todos los elementos estén en el DOM
       setTimeout(() => {
-        // Animaciones básicas desde abajo
-        const scrollElements = document.querySelectorAll(".scroll-animate");
-        if (scrollElements.length > 0) {
-          sr.reveal(".scroll-animate", {
-            origin: "bottom",
-            distance: "30px",
-            duration: 600,
-            delay: 100,
+        // Función para aplicar delays por contenedor/sección
+        function applyDelaysByContainer() {
+          // Para cada artículo o sección principal, reiniciar el contador de delay
+          const containers = document.querySelectorAll(
+            "article, section, .card-container, main > div"
+          );
+
+          containers.forEach((container) => {
+            let delayCounter = 0;
+
+            // Dentro de cada contenedor, aplicar delays secuenciales
+            const elementsInContainer = container.querySelectorAll(
+              ".card-animate, .title-animate, .scroll-animate, .scroll-stagger, .fade-animate, .scroll-animate-left, .scroll-animate-right, .scroll-animate-scale"
+            );
+
+            elementsInContainer.forEach((element) => {
+              const el = element as HTMLElement;
+              const classList = el.classList;
+
+              if (classList.contains("card-animate")) {
+                sr.reveal(el, {
+                  origin: "bottom",
+                  distance: "60px",
+                  duration: 900,
+                  scale: 0.9,
+                  delay: delayCounter * 500,
+                });
+              } else if (classList.contains("title-animate")) {
+                sr.reveal(el, {
+                  origin: "top",
+                  distance: "40px",
+                  duration: 1000,
+                  delay: delayCounter * 500,
+                });
+              } else if (classList.contains("scroll-animate")) {
+                sr.reveal(el, {
+                  origin: "bottom",
+                  distance: "50px",
+                  duration: 800,
+                  delay: delayCounter * 500,
+                });
+              } else if (classList.contains("scroll-stagger")) {
+                sr.reveal(el, {
+                  origin: "bottom",
+                  distance: "40px",
+                  duration: 700,
+                  delay: delayCounter * 500,
+                });
+              } else if (classList.contains("fade-animate")) {
+                sr.reveal(el, {
+                  distance: "0px",
+                  duration: 800,
+                  delay: delayCounter * 500,
+                });
+              } else if (classList.contains("scroll-animate-left")) {
+                sr.reveal(el, {
+                  origin: "left",
+                  distance: "50px",
+                  duration: 800,
+                  delay: delayCounter * 500,
+                });
+              } else if (classList.contains("scroll-animate-right")) {
+                sr.reveal(el, {
+                  origin: "right",
+                  distance: "50px",
+                  duration: 800,
+                  delay: delayCounter * 500,
+                });
+              } else if (classList.contains("scroll-animate-scale")) {
+                sr.reveal(el, {
+                  origin: "bottom",
+                  distance: "30px",
+                  duration: 800,
+                  scale: 0.85,
+                  delay: delayCounter * 500,
+                });
+              }
+
+              delayCounter++;
+            });
           });
         }
 
-        // Animaciones desde la izquierda
-        const leftElements = document.querySelectorAll(".scroll-animate-left");
-        if (leftElements.length > 0) {
-          sr.reveal(".scroll-animate-left", {
-            origin: "left",
-            distance: "40px",
-            duration: 700,
-            delay: 200,
-          });
-        }
+        // Aplicar delays por contenedor
+        applyDelaysByContainer();
 
-        // Animaciones desde la derecha
-        const rightElements = document.querySelectorAll(
-          ".scroll-animate-right"
+        // Para elementos que no están dentro de contenedores específicos, aplicar animación simple
+        const orphanElements = document.querySelectorAll(
+          "body > .card-animate, body > .title-animate, body > .scroll-animate, body > .scroll-stagger, body > .fade-animate"
         );
-        if (rightElements.length > 0) {
-          sr.reveal(".scroll-animate-right", {
-            origin: "right",
-            distance: "40px",
-            duration: 700,
-            delay: 200,
-          });
-        }
-
-        // Animaciones con escala
-        const scaleElements = document.querySelectorAll(
-          ".scroll-animate-scale"
-        );
-        if (scaleElements.length > 0) {
-          sr.reveal(".scroll-animate-scale", {
-            origin: "bottom",
-            distance: "20px",
-            duration: 800,
-            scale: 0.9,
-            delay: 300,
-          });
-        }
-
-        // Animaciones escalonadas para listas
-        const staggerElements = document.querySelectorAll(".scroll-stagger");
-        if (staggerElements.length > 0) {
-          sr.reveal(".scroll-stagger", {
-            origin: "bottom",
-            distance: "25px",
-            duration: 500,
-            delay: 100,
-            interval: 150,
-          });
-        }
-
-        // Animaciones especiales para tarjetas
-        const cardElements = document.querySelectorAll(".card-animate");
-        if (cardElements.length > 0) {
-          sr.reveal(".card-animate", {
+        orphanElements.forEach((element, index) => {
+          const el = element as HTMLElement;
+          sr.reveal(el, {
             origin: "bottom",
             distance: "50px",
             duration: 800,
-            scale: 0.95,
-            delay: 200,
-            interval: 200,
+            delay: index * 500,
           });
-        }
-
-        // Animaciones para títulos principales
-        const titleElements = document.querySelectorAll(".title-animate");
-        if (titleElements.length > 0) {
-          sr.reveal(".title-animate", {
-            origin: "top",
-            distance: "30px",
-            duration: 1000,
-            delay: 300,
-          });
-        }
-
-        // Animaciones para elementos de fade-in
-        const fadeElements = document.querySelectorAll(".fade-animate");
-        if (fadeElements.length > 0) {
-          sr.reveal(".fade-animate", {
-            distance: "0px",
-            duration: 800,
-            delay: 250,
-          });
-        }
+        });
 
         console.log("ScrollReveal inicializado correctamente");
 
