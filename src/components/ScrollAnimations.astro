@@ -1,0 +1,171 @@
+---
+// ScrollAnimations.astro - Componente para animaciones de scroll usando ScrollReveal
+---
+
+<script>
+  import ScrollReveal from "scrollreveal";
+
+  // Función para inicializar animaciones de scroll
+  function initScrollReveal() {
+    try {
+      // Asegurar que todos los elementos sean visibles por defecto antes de configurar ScrollReveal
+      document.querySelectorAll('[class*="animate"]').forEach((el) => {
+        const element = el as HTMLElement;
+        element.style.visibility = "visible";
+        element.style.opacity = "1";
+      });
+
+      // Configuración básica y segura de ScrollReveal
+      const sr = ScrollReveal({
+        distance: "30px",
+        duration: 600,
+        easing: "ease-out",
+        reset: false,
+        mobile: true,
+        viewFactor: 0.15,
+        cleanup: true,
+        beforeReveal: function (el) {
+          (el as HTMLElement).style.visibility = "visible";
+        },
+        afterReveal: function (el) {
+          (el as HTMLElement).style.visibility = "visible";
+          (el as HTMLElement).style.opacity = "1";
+        },
+      });
+
+      // Esperar un poco para asegurar que todos los elementos estén en el DOM
+      setTimeout(() => {
+        // Animaciones básicas desde abajo
+        const scrollElements = document.querySelectorAll(".scroll-animate");
+        if (scrollElements.length > 0) {
+          sr.reveal(".scroll-animate", {
+            origin: "bottom",
+            distance: "30px",
+            duration: 600,
+            delay: 100,
+          });
+        }
+
+        // Animaciones desde la izquierda
+        const leftElements = document.querySelectorAll(".scroll-animate-left");
+        if (leftElements.length > 0) {
+          sr.reveal(".scroll-animate-left", {
+            origin: "left",
+            distance: "40px",
+            duration: 700,
+            delay: 200,
+          });
+        }
+
+        // Animaciones desde la derecha
+        const rightElements = document.querySelectorAll(
+          ".scroll-animate-right"
+        );
+        if (rightElements.length > 0) {
+          sr.reveal(".scroll-animate-right", {
+            origin: "right",
+            distance: "40px",
+            duration: 700,
+            delay: 200,
+          });
+        }
+
+        // Animaciones con escala
+        const scaleElements = document.querySelectorAll(
+          ".scroll-animate-scale"
+        );
+        if (scaleElements.length > 0) {
+          sr.reveal(".scroll-animate-scale", {
+            origin: "bottom",
+            distance: "20px",
+            duration: 800,
+            scale: 0.9,
+            delay: 300,
+          });
+        }
+
+        // Animaciones escalonadas para listas
+        const staggerElements = document.querySelectorAll(".scroll-stagger");
+        if (staggerElements.length > 0) {
+          sr.reveal(".scroll-stagger", {
+            origin: "bottom",
+            distance: "25px",
+            duration: 500,
+            delay: 100,
+            interval: 150,
+          });
+        }
+
+        // Animaciones especiales para tarjetas
+        const cardElements = document.querySelectorAll(".card-animate");
+        if (cardElements.length > 0) {
+          sr.reveal(".card-animate", {
+            origin: "bottom",
+            distance: "50px",
+            duration: 800,
+            scale: 0.95,
+            delay: 200,
+            interval: 200,
+          });
+        }
+
+        // Animaciones para títulos principales
+        const titleElements = document.querySelectorAll(".title-animate");
+        if (titleElements.length > 0) {
+          sr.reveal(".title-animate", {
+            origin: "top",
+            distance: "30px",
+            duration: 1000,
+            delay: 300,
+          });
+        }
+
+        // Animaciones para elementos de fade-in
+        const fadeElements = document.querySelectorAll(".fade-animate");
+        if (fadeElements.length > 0) {
+          sr.reveal(".fade-animate", {
+            distance: "0px",
+            duration: 800,
+            delay: 250,
+          });
+        }
+
+        console.log("ScrollReveal inicializado correctamente");
+
+        // Timeout de seguridad para asegurar visibilidad
+        setTimeout(() => {
+          document.querySelectorAll('[class*="animate"]').forEach((el) => {
+            const element = el as HTMLElement;
+            if (
+              getComputedStyle(element).visibility === "hidden" ||
+              getComputedStyle(element).opacity === "0"
+            ) {
+              element.style.visibility = "visible";
+              element.style.opacity = "1";
+              element.style.transform = "none";
+            }
+          });
+        }, 2000);
+      }, 300);
+    } catch (error) {
+      console.warn("Error al inicializar ScrollReveal:", error);
+      // Fallback crítico: asegurar que todo sea visible
+      document.querySelectorAll('[class*="animate"]').forEach((el) => {
+        const element = el as HTMLElement;
+        element.style.visibility = "visible";
+        element.style.opacity = "1";
+        element.style.transform = "none";
+      });
+    }
+  }
+
+  // Asegurar que ScrollReveal se inicialice correctamente
+  if (typeof window !== "undefined") {
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initScrollReveal);
+    } else {
+      // El DOM ya está cargado
+      initScrollReveal();
+    }
+  }
+</script>
