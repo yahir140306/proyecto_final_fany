@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
+import ScrollAnimations from "../components/ScrollAnimations.astro";
 ---
 
 <Layout title="Análisis de Datos - Proyecto Final">
@@ -9,15 +10,15 @@ import Navbar from "../components/Navbar.astro";
   <div class="pt-10 sm:pt-16 pb-8 sm:pb-16 z-10">
     <div class="max-w-4xl mx-auto px-4 sm:px-6">
       <div
-        class="bg-white rounded-2xl p-6 sm:p-8 shadow-xl border border-white/20"
+        class="scroll-animate bg-white rounded-2xl p-6 sm:p-8 shadow-xl border border-white/20"
       >
         <h1
-          class="text-3xl sm:text-4xl font-bold mb-6 bg-gradient-to-r from-green-600 to-teal-600 bg-clip-text text-transparent"
+          class="scroll-animate text-3xl sm:text-4xl font-bold mb-6 bg-gradient-to-r from-green-600 to-teal-600 bg-clip-text text-transparent"
         >
           Análisis de Datos
         </h1>
 
-        <p class="text-gray-700 mb-6 fade-in-up-delayed" style="--delay: 0.3s">
+        <p class="scroll-animate text-gray-700 mb-6">
           Esta sección presenta los resultados obtenidos en la investigación y
           la interpretación de los mismos. Es una de las partes más importantes
           del informe, ya que aquí se demuestra si se cumplieron o no los
@@ -25,17 +26,13 @@ import Navbar from "../components/Navbar.astro";
         </p>
 
         <h2
-          class="text-xl sm:text-2xl font-semibold text-teal-700 mb-4 fade-in-up-delayed"
-          style="--delay: 0.4s"
+          class="scroll-animate-left text-xl sm:text-2xl font-semibold text-teal-700 mb-4"
         >
           Incluye:
         </h2>
 
-        <ul
-          class="space-y-3 ml-5 mb-6 fade-in-up-delayed"
-          style="--delay: 0.5s"
-        >
-          <li class="flex items-start">
+        <ul class="space-y-3 ml-5 mb-6">
+          <li class="scroll-stagger flex items-start">
             <span
               class="inline-flex items-center justify-center rounded-md bg-teal-100 p-1 text-teal-700 mr-3"
             >
@@ -54,7 +51,7 @@ import Navbar from "../components/Navbar.astro";
             </span>
             Presentación de los datos mediante gráficos, tablas o diagramas
           </li>
-          <li class="flex items-start">
+          <li class="scroll-stagger flex items-start">
             <span
               class="inline-flex items-center justify-center rounded-md bg-teal-100 p-1 text-teal-700 mr-3"
             >
@@ -73,7 +70,7 @@ import Navbar from "../components/Navbar.astro";
             </span>
             Descripción e interpretación de los resultados
           </li>
-          <li class="flex items-start">
+          <li class="scroll-stagger flex items-start">
             <span
               class="inline-flex items-center justify-center rounded-md bg-teal-100 p-1 text-teal-700 mr-3"
             >
@@ -114,8 +111,7 @@ import Navbar from "../components/Navbar.astro";
         </ul>
 
         <div
-          class="p-4 bg-teal-50 rounded-xl border border-teal-100 mt-8 fade-in-up-delayed"
-          style="--delay: 0.6s"
+          class="scroll-animate-scale p-4 bg-teal-50 rounded-xl border border-teal-100 mt-8"
         >
           <p class="text-gray-700">
             El análisis debe ser <span class="font-semibold text-teal-700"
@@ -126,8 +122,7 @@ import Navbar from "../components/Navbar.astro";
 
         <!-- Gráfico de ejemplo - Animado y responsivo -->
         <div
-          class="mt-10 p-4 bg-white rounded-xl shadow-md fade-in-up-delayed"
-          style="--delay: 0.8s"
+          class="scroll-animate-right mt-10 p-4 bg-white rounded-xl shadow-md"
         >
           <h3 class="text-lg font-semibold text-gray-800 mb-4">
             Ejemplo de Análisis Visual
@@ -192,3 +187,5 @@ import Navbar from "../components/Navbar.astro";
     animation: grow 1s ease-out forwards;
   }
 </style>
+
+<ScrollAnimations />

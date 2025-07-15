@@ -1,20 +1,26 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import ScrollAnimations from "../components/ScrollAnimations.astro";
 ---
 
 <Layout title="Test Page">
   <div
+    class="scroll-animate"
     style="background: white; margin: 50px; padding: 50px; border-radius: 10px; position: relative; z-index: 100;"
   >
-    <h1 style="color: black; font-size: 2rem; margin-bottom: 20px;">
+    <h1
+      class="title-animate"
+      style="color: black; font-size: 2rem; margin-bottom: 20px;"
+    >
       Página de Prueba
     </h1>
-    <p style="color: black; font-size: 1.2rem;">
+    <p class="fade-animate" style="color: black; font-size: 1.2rem;">
       Este es contenido de prueba para verificar que se muestra correctamente.
     </p>
-    <p style="color: red; font-size: 1rem;">
+    <p class="scroll-animate" style="color: red; font-size: 1rem;">
       Si puedes ver este texto rojo, entonces el problema no es con el layout
       básico.
     </p>
   </div>
+  <ScrollAnimations />
 </Layout>

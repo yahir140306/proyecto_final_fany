@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
+import ScrollAnimations from "../components/ScrollAnimations.astro";
 ---
 
 <Layout title="Apéndices - Proyecto Final">
@@ -9,15 +10,15 @@ import Navbar from "../components/Navbar.astro";
   <div class="pt-10 sm:pt-16 pb-8 sm:pb-16 z-10">
     <div class="max-w-4xl mx-auto px-4 sm:px-6">
       <div
-        class="bg-white rounded-2xl p-6 sm:p-8 shadow-xl border border-white/20"
+        class="scroll-animate bg-white rounded-2xl p-6 sm:p-8 shadow-xl border border-white/20"
       >
         <h1
-          class="text-3xl sm:text-4xl font-bold mb-6 bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent"
+          class="scroll-animate text-3xl sm:text-4xl font-bold mb-6 bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent"
         >
           Apéndices
         </h1>
 
-        <p class="text-gray-700 mb-6 fade-in-up-delayed" style="--delay: 0.3s">
+        <p class="scroll-animate text-gray-700 mb-6">
           Los apéndices son materiales complementarios que respaldan la
           investigación, pero que son demasiado extensos para incluirse en el
           cuerpo principal del informe. Se colocan al final del documento y se
@@ -25,8 +26,7 @@ import Navbar from "../components/Navbar.astro";
         </p>
 
         <h2
-          class="text-xl sm:text-2xl font-semibold text-indigo-700 mb-4 fade-in-up-delayed"
-          style="--delay: 0.4s"
+          class="scroll-animate-left text-xl sm:text-2xl font-semibold text-indigo-700 mb-4"
         >
           Ejemplos de contenido de los apéndices:
         </h2>
@@ -281,4 +281,6 @@ import Navbar from "../components/Navbar.astro";
       </div>
     </div>
   </div>
+
+  <ScrollAnimations />
 </Layout>

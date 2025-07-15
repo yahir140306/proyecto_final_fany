@@ -1,6 +1,7 @@
----
+﻿---
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
+import ScrollAnimations from "../components/ScrollAnimations.astro";
 ---
 
 <Layout title="Conclusiones - Proyecto Final">
@@ -9,32 +10,28 @@ import Navbar from "../components/Navbar.astro";
   <div class="pt-10 sm:pt-16 pb-8 sm:pb-16 z-10">
     <div class="max-w-4xl mx-auto px-4 sm:px-6">
       <div
-        class="bg-white rounded-2xl p-6 sm:p-8 shadow-xl border border-white/20"
+        class="scroll-animate bg-white rounded-2xl p-6 sm:p-8 shadow-xl border border-white/20"
       >
         <h1
-          class="text-3xl sm:text-4xl font-bold mb-6 bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent"
+          class="scroll-animate text-3xl sm:text-4xl font-bold mb-6 bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent"
         >
           Conclusiones
         </h1>
 
-        <p class="text-gray-700 mb-6 fade-in-up-delayed" style="--delay: 0.3s">
+        <p class="scroll-animate text-gray-700 mb-6">
           Las conclusiones son el resultado final de todo el proceso
-          investigativo. Aquí se exponen las ideas principales que se obtuvieron
-          a partir del análisis de los datos.
+          investigativo. AquÃ­ se exponen las ideas principales que se
+          obtuvieron a partir del anÃ¡lisis de los datos.
         </p>
 
         <h2
-          class="text-xl sm:text-2xl font-semibold text-amber-700 mb-4 fade-in-up-delayed"
-          style="--delay: 0.4s"
+          class="scroll-animate-left text-xl sm:text-2xl font-semibold text-amber-700 mb-4"
         >
           Debe contener:
         </h2>
 
-        <ul
-          class="space-y-3 ml-5 mb-6 fade-in-up-delayed"
-          style="--delay: 0.5s"
-        >
-          <li class="flex items-start">
+        <ul class="space-y-3 ml-5 mb-6">
+          <li class="scroll-stagger flex items-start">
             <span
               class="inline-flex items-center justify-center rounded-md bg-amber-100 p-1 text-amber-700 mr-3"
             >
@@ -51,9 +48,9 @@ import Navbar from "../components/Navbar.astro";
                   d="M5 13l4 4L19 7"></path>
               </svg>
             </span>
-            Un resumen de los hallazgos más importantes
+            Un resumen de los hallazgos mÃ¡s importantes
           </li>
-          <li class="flex items-start">
+          <li class="scroll-stagger flex items-start">
             <span
               class="inline-flex items-center justify-center rounded-md bg-amber-100 p-1 text-amber-700 mr-3"
             >
@@ -70,9 +67,9 @@ import Navbar from "../components/Navbar.astro";
                   d="M5 13l4 4L19 7"></path>
               </svg>
             </span>
-            Respuestas a las preguntas planteadas en la introducción
+            Respuestas a las preguntas planteadas en la introducciÃ³n
           </li>
-          <li class="flex items-start">
+          <li class="scroll-stagger flex items-start">
             <span
               class="inline-flex items-center justify-center rounded-md bg-amber-100 p-1 text-amber-700 mr-3"
             >
@@ -89,9 +86,9 @@ import Navbar from "../components/Navbar.astro";
                   d="M5 13l4 4L19 7"></path>
               </svg>
             </span>
-            Confirmación o rechazo de las hipótesis planteadas
+            ConfirmaciÃ³n o rechazo de las hipÃ³tesis planteadas
           </li>
-          <li class="flex items-start">
+          <li class="scroll-stagger flex items-start">
             <span
               class="inline-flex items-center justify-center rounded-md bg-amber-100 p-1 text-amber-700 mr-3"
             >
@@ -108,7 +105,7 @@ import Navbar from "../components/Navbar.astro";
                   d="M5 13l4 4L19 7"></path>
               </svg>
             </span>
-            Implicaciones de los resultados para el área de estudio
+            Implicaciones de los resultados para el Ã¡rea de estudio
           </li>
         </ul>
 
@@ -120,8 +117,8 @@ import Navbar from "../components/Navbar.astro";
             Las conclusiones deben estar <span
               class="font-semibold text-amber-700"
               >directamente relacionadas con los objetivos</span
-            > planteados al inicio de la investigación y ser coherentes con los resultados
-            obtenidos.
+            > planteados al inicio de la investigaciÃ³n y ser coherentes con los
+            resultados obtenidos.
           </p>
         </div>
 
@@ -134,10 +131,10 @@ import Navbar from "../components/Navbar.astro";
             class="bg-white p-4 rounded-lg shadow-md border-l-4 border-amber-500 transform hover:scale-105 transition-transform duration-300"
           >
             <h3 class="font-semibold text-amber-800 mb-2">
-              Conclusión General
+              ConclusiÃ³n General
             </h3>
             <p class="text-gray-700 text-sm">
-              Síntesis que responde al objetivo principal de la investigación.
+              SÃ­ntesis que responde al objetivo principal de la investigaciÃ³n.
             </p>
           </div>
 
@@ -145,14 +142,16 @@ import Navbar from "../components/Navbar.astro";
             class="bg-white p-4 rounded-lg shadow-md border-l-4 border-orange-500 transform hover:scale-105 transition-transform duration-300"
           >
             <h3 class="font-semibold text-orange-800 mb-2">
-              Conclusiones Específicas
+              Conclusiones EspecÃ­ficas
             </h3>
             <p class="text-gray-700 text-sm">
-              Resultados puntuales que responden a cada objetivo específico.
+              Resultados puntuales que responden a cada objetivo especÃ­fico.
             </p>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <ScrollAnimations />
 </Layout>
