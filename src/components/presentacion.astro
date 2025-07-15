@@ -467,12 +467,15 @@
   // ScrollReveal animations for presentacion
   import ScrollReveal from "scrollreveal";
 
-  document.addEventListener("DOMContentLoaded", function () {
+  function initializePresentacionAnimations() {
+    // Limpiar animaciones anteriores
+    ScrollReveal().clean(".title-animate, .fade-animate, .card-animate");
+
     const sr = ScrollReveal({
       distance: "50px",
       duration: 800,
       easing: "ease-in-out",
-      reset: false,
+      reset: true,
       mobile: true,
       viewFactor: 0.2,
     });
@@ -496,7 +499,25 @@
       duration: 900,
       interval: 500,
     });
-  });
+  }
+
+  // Ejecutar al cargar la página
+  document.addEventListener(
+    "DOMContentLoaded",
+    initializePresentacionAnimations
+  );
+
+  // Ejecutar cuando Astro navega a esta página
+  document.addEventListener(
+    "astro:page-load",
+    initializePresentacionAnimations
+  );
+
+  // Ejecutar cuando la página se vuelve visible (navegación)
+  document.addEventListener(
+    "astro:after-swap",
+    initializePresentacionAnimations
+  );
 </script>
 
 <style>

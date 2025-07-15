@@ -79,8 +79,10 @@ import Navbar from "../components/Navbar.astro";
 
     function initializeAnimations() {
       // Limpiar animaciones anteriores
-      ScrollReveal().clean('.card-animate, .title-animate, .fade-animate, .scroll-animate, .scroll-stagger');
-      
+      ScrollReveal().clean(
+        ".card-animate, .title-animate, .fade-animate, .scroll-animate, .scroll-stagger"
+      );
+
       const sr = ScrollReveal({
         distance: "50px",
         duration: 800,

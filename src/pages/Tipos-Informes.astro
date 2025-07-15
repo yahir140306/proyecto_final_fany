@@ -520,12 +520,17 @@ import ScrollAnimations from "../components/ScrollAnimations.astro";
 <script>
   import ScrollReveal from "scrollreveal";
 
-  document.addEventListener("DOMContentLoaded", function () {
+  function initializeAnimations() {
+    // Limpiar animaciones anteriores
+    ScrollReveal().clean(
+      ".scroll-animate, .title-animate, .card-animate, .scroll-stagger"
+    );
+
     const sr = ScrollReveal({
       distance: "50px",
       duration: 800,
       easing: "ease-in-out",
-      reset: false,
+      reset: true,
       mobile: true,
       viewFactor: 0.2,
     });
@@ -557,5 +562,14 @@ import ScrollAnimations from "../components/ScrollAnimations.astro";
       duration: 600,
       interval: 200,
     });
-  });
+  }
+
+  // Ejecutar al cargar la página
+  document.addEventListener("DOMContentLoaded", initializeAnimations);
+
+  // Ejecutar cuando Astro navega a esta página
+  document.addEventListener("astro:page-load", initializeAnimations);
+
+  // Ejecutar cuando la página se vuelve visible (navegación)
+  document.addEventListener("astro:after-swap", initializeAnimations);
 </script>
