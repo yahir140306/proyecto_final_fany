@@ -52,7 +52,6 @@
 
 <section class="relative z-10 pt-10 sm:pt-20 pb-8 sm:pb-16">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Título principal con animación -->
     <div class="text-center mb-10 sm:mb-16">
       <h1
         class="title-animate text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6"
@@ -79,9 +78,7 @@
       </p>
     </div>
 
-    <!-- Cards de información -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-10 sm:mb-16">
-      <!-- Card Principal -->
       <div class="card-animate group relative card-interactive">
         <div
           class="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl blur opacity-25 group-hover:opacity-75 group-active:opacity-75 transition duration-1000 group-hover:duration-200"
@@ -123,7 +120,6 @@
         </div>
       </div>
 
-      <!-- Card Estudiante -->
       <div class="card-animate group relative card-interactive">
         <div
           class="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl blur opacity-25 group-hover:opacity-75 group-active:opacity-75 transition duration-1000 group-hover:duration-200"
@@ -471,56 +467,155 @@
     // Limpiar animaciones anteriores
     ScrollReveal().clean(".title-animate, .fade-animate, .card-animate");
 
+    // Agregar clase para activar estados ocultos
+    document.body.classList.add("sr-container");
+
     const sr = ScrollReveal({
-      distance: "50px",
-      duration: 800,
-      easing: "ease-in-out",
-      reset: true,
+      distance: "60px",
+      duration: 1000,
+      easing: "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+      reset: false,
       mobile: true,
-      viewFactor: 0.2,
+      viewFactor: 0.15,
+      scale: 0.9,
     });
 
-    // Título principal
-    sr.reveal(".title-animate", {
+    // Navegación (aparece primero)
+    sr.reveal("nav", {
       origin: "top",
-      delay: 200,
+      delay: 0,
+      distance: "30px",
+      duration: 800,
     });
 
-    // Descripción
+    // Título principal (más dramático)
+    sr.reveal(".title-animate", {
+      origin: "bottom",
+      delay: 300,
+      distance: "80px",
+      duration: 1200,
+      scale: 0.8,
+    });
+
+    // Descripción (sincronizada mejor)
     sr.reveal(".fade-animate", {
       origin: "bottom",
-      delay: 700,
+      delay: 800,
+      distance: "40px",
+      duration: 1000,
     });
 
-    // Las 4 tarjetas aparecen una por una con 500ms de diferencia
+    // Las 4 tarjetas aparecen en secuencia más natural
     sr.reveal(".card-animate", {
       origin: "bottom",
-      distance: "60px",
-      duration: 900,
-      interval: 500,
+      distance: "80px",
+      duration: 1000,
+      interval: 200,
+      delay: 1200,
+      scale: 0.85,
+      easing: "cubic-bezier(0.175, 0.885, 0.32, 1.275)",
     });
   }
 
+  // Función fallback para mostrar contenido si ScrollReveal falla
+  function ensureContentVisible() {
+    setTimeout(() => {
+      const elements = document.querySelectorAll(
+        ".title-animate, .fade-animate, .card-animate"
+      );
+      elements.forEach((el) => {
+        const element = el as HTMLElement;
+        if (window.getComputedStyle(element).opacity === "0") {
+          element.style.opacity = "1";
+          element.style.transform = "none";
+        }
+      });
+    }, 2000);
+  }
+
   // Ejecutar al cargar la página
-  document.addEventListener(
-    "DOMContentLoaded",
-    initializePresentacionAnimations
-  );
+  document.addEventListener("DOMContentLoaded", function () {
+    initializePresentacionAnimations();
+    ensureContentVisible();
+  });
 
   // Ejecutar cuando Astro navega a esta página
-  document.addEventListener(
-    "astro:page-load",
-    initializePresentacionAnimations
-  );
+  document.addEventListener("astro:page-load", function () {
+    initializePresentacionAnimations();
+    ensureContentVisible();
+  });
 
   // Ejecutar cuando la página se vuelve visible (navegación)
-  document.addEventListener(
-    "astro:after-swap",
-    initializePresentacionAnimations
-  );
+  document.addEventListener("astro:after-swap", function () {
+    initializePresentacionAnimations();
+    ensureContentVisible();
+  });
 </script>
 
 <style>
+  /* Mejorar las transiciones de las tarjetas */
+  .card-interactive {
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform, box-shadow;
+  }
+
+  .card-interactive:hover {
+    transform: translateY(-8px) scale(1.02);
+  }
+
+  .card-interactive:active {
+    transform: translateY(-2px) scale(0.98);
+  }
+
+  /* Navegación más suave */
+  nav {
+    transition: all 0.3s ease-out;
+    will-change: backdrop-filter, background-color;
+  }
+
+  /* Links de navegación más responsivos */
+  .nav-link {
+    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .nav-link::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+    transition: left 0.5s;
+  }
+
+  .nav-link:hover::before {
+    left: 100%;
+  }
+
+  /* Efectos de gradiente mejorados */
+  .title-animate span {
+    background-size: 200% 200%;
+    animation: gradient-shift 3s ease-in-out infinite;
+  }
+
+  @keyframes gradient-shift {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
   @keyframes ripple {
     to {
       transform: scale(4);
@@ -530,5 +625,38 @@
 
   .touching {
     transform: scale(0.98);
+  }
+
+  /* Mejorar rendimiento en móviles */
+  @media (max-width: 768px) {
+    .card-interactive {
+      transition-duration: 0.2s;
+    }
+
+    .title-animate span {
+      animation-duration: 2s;
+    }
+  }
+
+  /* Efecto de aparición más suave */
+  .sr-reveal {
+    opacity: 1 !important;
+    transform: translateY(0) scale(1) !important;
+  }
+
+  /* Asegurar que el contenido sea visible por defecto */
+  .title-animate,
+  .fade-animate,
+  .card-animate {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Solo aplicar estados ocultos cuando ScrollReveal esté listo */
+  .sr-container .title-animate,
+  .sr-container .fade-animate,
+  .sr-container .card-animate {
+    opacity: 0;
+    transform: translateY(30px);
   }
 </style>

@@ -19,7 +19,6 @@ import ScrollAnimations from "../components/ScrollAnimations.astro";
         </h1>
 
         <div class="grid gap-6 md:gap-8">
-          <!-- Informe técnico -->
           <article
             class="card-animate bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-[1.02]"
           >
@@ -521,7 +520,6 @@ import ScrollAnimations from "../components/ScrollAnimations.astro";
   import ScrollReveal from "scrollreveal";
 
   function initializeAnimations() {
-    // Limpiar animaciones anteriores
     ScrollReveal().clean(
       ".scroll-animate, .title-animate, .card-animate, .scroll-stagger"
     );
@@ -535,19 +533,16 @@ import ScrollAnimations from "../components/ScrollAnimations.astro";
       viewFactor: 0.2,
     });
 
-    // Contenedor principal
     sr.reveal(".scroll-animate", {
       origin: "bottom",
       delay: 200,
     });
 
-    // Título principal
     sr.reveal(".title-animate", {
       origin: "top",
       delay: 500,
     });
 
-    // Cada tarjeta de informe aparece con 500ms de diferencia
     sr.reveal(".card-animate", {
       origin: "bottom",
       distance: "60px",
@@ -555,7 +550,6 @@ import ScrollAnimations from "../components/ScrollAnimations.astro";
       interval: 500,
     });
 
-    // Elementos de las listas dentro de cada tarjeta
     sr.reveal(".scroll-stagger", {
       origin: "left",
       distance: "30px",
@@ -564,12 +558,9 @@ import ScrollAnimations from "../components/ScrollAnimations.astro";
     });
   }
 
-  // Ejecutar al cargar la página
   document.addEventListener("DOMContentLoaded", initializeAnimations);
 
-  // Ejecutar cuando Astro navega a esta página
   document.addEventListener("astro:page-load", initializeAnimations);
 
-  // Ejecutar cuando la página se vuelve visible (navegación)
   document.addEventListener("astro:after-swap", initializeAnimations);
 </script>

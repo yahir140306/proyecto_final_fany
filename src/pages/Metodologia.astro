@@ -1,7 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
-import ScrollAnimations from "../components/ScrollAnimations.astro";
 ---
 
 <Layout title="Metodología - Proyecto Final">
@@ -23,6 +22,133 @@ import ScrollAnimations from "../components/ScrollAnimations.astro";
           investigación. Permite que otras personas puedan reproducir el estudio
           o entender cómo se obtuvieron los datos y resultados.
         </p>
+
+        <!-- Carousel de imágenes -->
+        <div class="carousel-container mb-8">
+          <div class="relative overflow-hidden rounded-xl bg-gray-100">
+            <div
+              class="carousel-track flex transition-transform duration-500 ease-in-out"
+            >
+              <div class="carousel-slide w-full flex-shrink-0">
+                <img
+                  src="./Images/imagen6.jpg"
+                  alt="Descripción de la imagen 6"
+                  class="w-full h-64 object-cover cursor-pointer hover:brightness-110 transition-all duration-300"
+                  onclick="openModal('./Images/imagen6.jpg', 'Descripción de la imagen 6')"
+                />
+              </div>
+              <div class="carousel-slide w-full flex-shrink-0">
+                <img
+                  src="./Images/imagen7.jpg"
+                  alt="Descripción de la imagen 7"
+                  class="w-full h-64 object-cover cursor-pointer hover:brightness-110 transition-all duration-300"
+                  onclick="openModal('./Images/imagen7.jpg', 'Descripción de la imagen 7')"
+                />
+              </div>
+              <div class="carousel-slide w-full flex-shrink-0">
+                <img
+                  src="./Images/imagen8.jpg"
+                  alt="Descripción de la imagen 8"
+                  class="w-full h-64 object-cover cursor-pointer hover:brightness-110 transition-all duration-300"
+                  onclick="openModal('./Images/imagen8.jpg', 'Descripción de la imagen 8')"
+                />
+              </div>
+              <div class="carousel-slide w-full flex-shrink-0">
+                <img
+                  src="./Images/imagen9.jpg"
+                  alt="Descripción de la imagen 9"
+                  class="w-full h-64 object-cover cursor-pointer hover:brightness-110 transition-all duration-300"
+                  onclick="openModal('./Images/imagen9.jpg', 'Descripción de la imagen 9')"
+                />
+              </div>
+              <div class="carousel-slide w-full flex-shrink-0">
+                <img
+                  src="./Images/imagen10.jpg"
+                  alt="Descripción de la imagen 10"
+                  class="w-full h-64 object-cover cursor-pointer hover:brightness-110 transition-all duration-300"
+                  onclick="openModal('./Images/imagen10.jpg', 'Descripción de la imagen 10')"
+                />
+              </div>
+            </div>
+
+            <!-- Indicadores -->
+            <div
+              class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2"
+            >
+              <button
+                class="carousel-indicator w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors"
+                data-slide="0"></button>
+              <button
+                class="carousel-indicator w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors"
+                data-slide="1"></button>
+              <button
+                class="carousel-indicator w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors"
+                data-slide="2"></button>
+              <button
+                class="carousel-indicator w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors"
+                data-slide="3"></button>
+              <button
+                class="carousel-indicator w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors"
+                data-slide="4"></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal para vista detallada de imágenes -->
+        <div
+          id="imageModal"
+          class="fixed inset-0 bg-black bg-opacity-75 items-center justify-center z-50 hidden p-4 sm:p-8"
+        >
+          <div
+            class="relative w-full h-full max-w-4xl max-h-full flex items-center justify-center"
+          >
+            <img
+              id="modalImage"
+              src=""
+              alt=""
+              class="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+            />
+            <!-- Botón de cerrar adaptado para móvil -->
+            <button
+              onclick="closeModal()"
+              class="absolute top-2 right-2 sm:top-4 sm:right-4 text-white bg-black bg-opacity-70 hover:bg-opacity-90 rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center transition-all duration-200 touch-manipulation"
+            >
+              <svg
+                class="w-4 h-4 sm:w-6 sm:h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+            <!-- Caption adaptado para móvil -->
+            <div
+              class="absolute bottom-2 left-2 right-2 sm:bottom-4 sm:left-4 sm:right-auto text-white bg-black bg-opacity-70 px-3 py-2 sm:px-4 sm:py-2 rounded-lg"
+            >
+              <p
+                id="modalCaption"
+                class="text-xs sm:text-sm text-center sm:text-left"
+              >
+              </p>
+            </div>
+            <!-- Indicador de cierre para móvil -->
+            <div
+              class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+            >
+              <div
+                class="sm:hidden text-white text-xs bg-black bg-opacity-50 px-2 py-1 rounded opacity-0"
+                id="tapHint"
+              >
+                Toca para cerrar
+              </div>
+            </div>
+          </div>
+        </div>
 
         <h2
           class="scroll-animate text-xl sm:text-2xl font-semibold text-blue-700 mb-4"
@@ -181,6 +307,12 @@ import ScrollAnimations from "../components/ScrollAnimations.astro";
         delay: 1000,
       });
 
+      // Carousel
+      sr.reveal(".carousel-container", {
+        origin: "bottom",
+        delay: 1200,
+      });
+
       // Subtítulo
       sr.reveal(".scroll-animate", {
         origin: "left",
@@ -196,13 +328,248 @@ import ScrollAnimations from "../components/ScrollAnimations.astro";
       });
     }
 
+    function initializeCarousel() {
+      const track = document.querySelector(".carousel-track") as HTMLElement;
+      const indicators = document.querySelectorAll(".carousel-indicator");
+
+      if (!track || !indicators.length) return;
+
+      let currentSlide = 0;
+      const totalSlides = 5;
+      const autoplayInterval = 3000; // 3 segundos
+      let autoplayTimer: NodeJS.Timeout;
+
+      function updateCarousel() {
+        const translateX = currentSlide * -100;
+        track.style.transform = `translateX(${translateX}%)`;
+
+        // Actualizar indicadores
+        indicators.forEach((indicator, index) => {
+          if (index === currentSlide) {
+            indicator.classList.add("bg-white");
+            indicator.classList.remove("bg-white/50");
+          } else {
+            indicator.classList.add("bg-white/50");
+            indicator.classList.remove("bg-white");
+          }
+        });
+      }
+
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateCarousel();
+      }
+
+      function startAutoplay() {
+        autoplayTimer = setInterval(nextSlide, autoplayInterval);
+      }
+
+      function stopAutoplay() {
+        clearInterval(autoplayTimer);
+      }
+
+      // Configurar indicadores clickeables
+      indicators.forEach((indicator, index) => {
+        indicator.addEventListener("click", () => {
+          currentSlide = index;
+          updateCarousel();
+          stopAutoplay();
+          startAutoplay(); // Reiniciar autoplay después del clic
+        });
+      });
+
+      // Inicializar
+      updateCarousel();
+      startAutoplay();
+
+      // Pausar autoplay al hacer hover sobre el carousel
+      const carouselContainer = document.querySelector(".carousel-container");
+      if (carouselContainer) {
+        carouselContainer.addEventListener("mouseenter", stopAutoplay);
+        carouselContainer.addEventListener("mouseleave", startAutoplay);
+      }
+    }
+
+    // Funciones para el modal de imágenes
+    function openModal(imageSrc: string, imageAlt: string) {
+      const modal = document.getElementById("imageModal");
+      const modalImage = document.getElementById(
+        "modalImage"
+      ) as HTMLImageElement;
+      const modalCaption = document.getElementById("modalCaption");
+
+      if (modal && modalImage && modalCaption) {
+        modalImage.src = imageSrc;
+        modalImage.alt = imageAlt;
+        modalCaption.textContent = imageAlt;
+
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+        document.body.style.overflow = "hidden"; // Prevenir scroll en el fondo
+
+        // Mostrar hint en móvil después de un momento
+        setTimeout(() => {
+          const tapHint = document.getElementById("tapHint");
+          if (tapHint && window.innerWidth < 640) {
+            tapHint.style.opacity = "1";
+            setTimeout(() => {
+              tapHint.style.opacity = "0";
+            }, 2000);
+          }
+        }, 500);
+      }
+    }
+
+    function closeModal() {
+      const modal = document.getElementById("imageModal");
+
+      if (modal) {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+        document.body.style.overflow = "auto"; // Restaurar scroll
+
+        // Limpiar hint
+        const tapHint = document.getElementById("tapHint");
+        if (tapHint) {
+          tapHint.style.opacity = "0";
+        }
+      }
+    }
+
+    // Manejar gestos táctiles para móvil
+    function setupTouchGestures() {
+      const modal = document.getElementById("imageModal");
+      if (!modal) return;
+
+      let startY = 0;
+      let startX = 0;
+
+      modal.addEventListener(
+        "touchstart",
+        function (e) {
+          startY = e.touches[0].clientY;
+          startX = e.touches[0].clientX;
+        },
+        { passive: true }
+      );
+
+      modal.addEventListener(
+        "touchend",
+        function (e) {
+          if (!e.changedTouches.length) return;
+
+          const endY = e.changedTouches[0].clientY;
+          const endX = e.changedTouches[0].clientX;
+          const diffY = startY - endY;
+          const diffX = startX - endX;
+
+          // Si es un swipe hacia abajo o un tap simple
+          if (Math.abs(diffY) > 50 && diffY < 0) {
+            closeModal();
+          } else if (Math.abs(diffY) < 10 && Math.abs(diffX) < 10) {
+            // Es un tap, verificar si no es en la imagen
+            const target = e.target as Element;
+            const modalImage = document.getElementById("modalImage");
+            if (target !== modalImage && !modalImage?.contains(target)) {
+              closeModal();
+            }
+          }
+        },
+        { passive: true }
+      );
+    }
+
+    // Hacer las funciones globales para que funcionen con onclick
+    (window as any).openModal = openModal;
+    (window as any).closeModal = closeModal;
+
     // Ejecutar al cargar la página
-    document.addEventListener("DOMContentLoaded", initializeAnimations);
+    document.addEventListener("DOMContentLoaded", function () {
+      initializeAnimations();
+      initializeCarousel();
+
+      // Configurar eventos del modal
+      const modal = document.getElementById("imageModal");
+      if (modal) {
+        // Cerrar modal al hacer clic en el fondo (solo en desktop)
+        modal.addEventListener("click", function (e) {
+          if (e.target === modal && window.innerWidth >= 640) {
+            closeModal();
+          }
+        });
+      }
+
+      // Configurar gestos táctiles para móvil
+      setupTouchGestures();
+
+      // Cerrar modal con la tecla Escape
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeModal();
+        }
+      });
+
+      // Prevenir zoom en doble tap en las imágenes del carousel
+      const carouselImages = document.querySelectorAll(".carousel-slide img");
+      carouselImages.forEach((img) => {
+        img.addEventListener("touchend", function (e) {
+          e.preventDefault();
+        });
+      });
+    });
 
     // Ejecutar cuando Astro navega a esta página
-    document.addEventListener("astro:page-load", initializeAnimations);
+    document.addEventListener("astro:page-load", function () {
+      initializeAnimations();
+      initializeCarousel();
+
+      // Reconfigurar eventos del modal
+      const modal = document.getElementById("imageModal");
+      if (modal) {
+        modal.addEventListener("click", function (e) {
+          if (e.target === modal && window.innerWidth >= 640) {
+            closeModal();
+          }
+        });
+      }
+
+      // Reconfigurar gestos táctiles
+      setupTouchGestures();
+
+      // Prevenir zoom en doble tap
+      const carouselImages = document.querySelectorAll(".carousel-slide img");
+      carouselImages.forEach((img) => {
+        img.addEventListener("touchend", function (e) {
+          e.preventDefault();
+        });
+      });
+    });
 
     // Ejecutar cuando la página se vuelve visible (navegación)
-    document.addEventListener("astro:after-swap", initializeAnimations);
+    document.addEventListener("astro:after-swap", function () {
+      initializeAnimations();
+      initializeCarousel();
+
+      // Reconfigurar eventos del modal
+      const modal = document.getElementById("imageModal");
+      if (modal) {
+        modal.addEventListener("click", function (e) {
+          if (e.target === modal && window.innerWidth >= 640) {
+            closeModal();
+          }
+        });
+      }
+
+      // Reconfigurar gestos táctiles
+      setupTouchGestures();
+
+      // Prevenir zoom en doble tap
+      const carouselImages = document.querySelectorAll(".carousel-slide img");
+      carouselImages.forEach((img) => {
+        img.addEventListener("touchend", function (e) {
+          e.preventDefault();
+        });
+      });
+    });
   </script>
 </Layout>

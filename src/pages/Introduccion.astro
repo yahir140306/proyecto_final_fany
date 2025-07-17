@@ -24,6 +24,14 @@ import ScrollAnimations from "../components/ScrollAnimations.astro";
           y lo prepara para entender el resto del informe.
         </p>
 
+        <section class="images">
+          <img src="./Images/imagen1.jpg" alt="Descripción de la imagen 1" />
+          <img src="./Images/imagen2.jpg" alt="Descripción de la imagen 2" />
+          <img src="./Images/imagen3.jpg" alt="Descripción de la imagen 3" />
+          <img src="./Images/imagen4.jpg" alt="Descripción de la imagen 4" />
+          <img src="./Images/imagen5.jpg" alt="Descripción de la imagen 5" />
+        </section>
+
         <h2
           class="scroll-animate text-xl sm:text-2xl font-semibold text-purple-700 mb-4"
         >
@@ -163,6 +171,53 @@ import ScrollAnimations from "../components/ScrollAnimations.astro";
       </div>
     </div>
   </div>
+
+  <style>
+    .images {
+      display: flex;
+      width: 600px;
+      height: 430px;
+      margin: 0 auto;
+    }
+
+    .images img {
+      width: 0px;
+      flex-grow: 1;
+      object-fit: cover;
+      opacity: 0.8;
+      border-radius: 10px;
+      margin: 10px;
+      transition: 0.5s ease;
+    }
+
+    .images img:hover {
+      cursor: crosshair;
+      width: 100%;
+      opacity: 1;
+      filter: contrast(120%);
+    }
+
+    @media (max-width: 700px) {
+      .images {
+        margin: 0;
+        flex-direction: row;
+        width: 400px;
+        align-content: stretch;
+        justify-content: center;
+      }
+
+      .images img {
+        flex-grow: 0.1;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .images img {
+        /* width: 100%; */
+        /* margin-top: 10px; */
+      }
+    }
+  </style>
 
   <script>
     import ScrollReveal from "scrollreveal";
